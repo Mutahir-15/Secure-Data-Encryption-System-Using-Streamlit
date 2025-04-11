@@ -40,3 +40,12 @@ This project is a Streamlit web application that allows users to register, log i
    ```bash
    git clone https://github.com/your-username/your-repo.git
    cd Secure-data-encryption-system
+   
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+   
+3. Run the app:
+   ```bash
+   streamlit run app.py
