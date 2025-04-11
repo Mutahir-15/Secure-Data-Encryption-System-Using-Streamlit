@@ -1,48 +1,42 @@
-# 🔐 Secure Data Encryption System - Streamlit App
+# Secure Data Encryption System Using Streamlit
 
-A **Streamlit-based Python application** for secure data storage and retrieval using **passkey encryption**. This lightweight app ensures user privacy by encrypting and decrypting data in memory, **without the need for external databases**.
+## Overview
+This project is a Streamlit web application that allows users to register, log in, and securely store/retrieve data using Fernet encryption. It was developed as a class project for GIAIC on April 08, 2025.
 
-## 🚀 Features
+## Features
+- User registration and login with username/password authentication (password strength enforced).
+- Securely stores data using Fernet encryption with a user-provided passkey.
+- Retrieves data by decrypting with the correct passkey.
+- Limits users to 3 failed decryption attempts before requiring re-login.
+- Persists data and user credentials in JSON files (`data.json` and `users.json`).
+- Includes logout functionality and logging for debugging.
+- User-friendly interface with loading spinners, input validation, and custom styling.
 
-- 🔒 **In-Memory Encryption/Decryption**: Store and retrieve sensitive data securely.
-- 🔑 **Passkey-Based Access**: User-provided passkey for encryption and decryption.
-- 🔁 **Reauthorization System**: Re-prompts for authentication after multiple failed decryption attempts.
-- 💾 **No Database Required**: All operations are handled in RAM for maximum security.
-- 📱 **User-Friendly UI**: Built with Streamlit for easy interaction.
+## How to Use
+1. Open the app at [insert Streamlit Cloud URL here].
+2. **Register**: Create a username and password (at least 8 characters, 1 uppercase, 1 number).
+3. **Login**: Log in with your credentials to access the system.
+4. Navigate using the sidebar:
+   - **Store Data**: Enter text and a passkey to encrypt and save your data.
+   - **Retrieve Data**: Enter the encrypted data and passkey to decrypt and view your data.
+   - **Logout**: Log out to end your session.
+5. After 3 failed decryption attempts, you’ll be logged out and must log in again.
 
-## 🛠 Technologies Used
-- Python
-- Streamlit
-- Cryptography / hashlib (or equivalent Python encryption libraries)
+## Security Features
+- Uses Fernet (symmetric encryption) from the `cryptography` library.
+- Hashes passkeys and passwords using SHA-256.
+- Enforces password strength during registration.
+- Limits failed attempts (both login and decryption) to 3 before requiring re-login.
+- Stores data in-memory and persists it to JSON files (excluded from Git).
+- Logs user actions and errors to `app.log`.
 
-## 🧪 Installation
+## Limitations
+- Single-user system; all data is stored in a shared dictionary (multi-user support could be added).
+- Fernet key is stored in session state; in production, it should be stored securely (e.g., in an environment variable).
+- No time-based lockout for failed attempts (could be added for production).
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/secure-data-vault.git
-cd secure-data-vault
-
-# (Optional) Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-## ▶️ Run the App
-```bash
-streamlit run app.py
-```
-
-## 🔐 How It Works
-1. Enter your **data** and **encryption passkey**.
-2. The app encrypts the data and stores it in memory.
-3. Use the same passkey to decrypt it later.
-4. Multiple failed attempts trigger reauthorization, preventing brute-force attacks.
-
-## 📄 License
-This project is open-source under the [MIT License](LICENSE).
-
----
-🛡️ Built for privacy-first applications. No cloud. No database. Just encryption magic!
+## Setup for Local Development
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd Secure-data-encryption-system
